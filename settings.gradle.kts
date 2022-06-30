@@ -8,4 +8,3 @@
  */
 
 rootProject.name = "ia-felles-definisjoner"
-include("lib")

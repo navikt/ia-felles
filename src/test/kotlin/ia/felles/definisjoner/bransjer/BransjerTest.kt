@@ -8,6 +8,7 @@ internal class BransjerTest {
     fun `alle bransjer har minst én næringskode`() {
         Bransjer.values().forEach { bransje ->
             assertTrue { bransje.næringskoder.isNotEmpty() }
+            assertTrue { bransje.navn.isNotBlank() }
         }
     }
 
