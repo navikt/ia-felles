@@ -25,7 +25,7 @@ enum class Bransjer(val navn: String, val næringskoder: List<String>) {
     ),
     TRANSPORT(
         navn = "Transport",
-        næringskoder = listOf("49100", "49311", "49391", "49392")
+        næringskoder = listOf("49100", "49311", "49312", "49391", "49392")
     ),
     BYGG(
         navn = "Bygg", næringskoder = listOf("41")
