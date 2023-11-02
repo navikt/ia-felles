@@ -32,5 +32,14 @@ enum class Bransje(val navn: String, val bransjeId: BransjeId) {
     ),
     ANLEGG(
         navn = "Anlegg", bransjeId = BransjeId.Næring("42")
-    ),
+    );
+
+    companion object {
+        fun fra(næringskode: String): Bransje? = Bransje.values().firstOrNull {
+            when (it.bransjeId) {
+                is BransjeId.Næring -> it.bransjeId.næring == næringskode.take(2)
+                is BransjeId.Næringskoder -> it.bransjeId.næringskoder.contains(næringskode)
+            }
+        }
+    }
 }

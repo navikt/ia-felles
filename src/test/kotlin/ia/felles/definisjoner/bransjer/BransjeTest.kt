@@ -1,6 +1,7 @@
 package ia.felles.definisjoner.bransjer
 
 import org.junit.Test
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 internal class BransjeTest {
@@ -16,5 +17,15 @@ internal class BransjeTest {
                 }
             }
         }
+    }
+
+    @Test
+    fun `uthenting av bransje basert på næring henter riktig bransje`() {
+        assertEquals(Bransje.fra("10"), Bransje.NÆRINGSMIDDELINDUSTRI)
+    }
+
+    @Test
+    fun `uthenting av bransje basert på næringskode henter riktig bransje`() {
+        assertEquals(Bransje.fra("87101"), Bransje.SYKEHJEM)
     }
 }
