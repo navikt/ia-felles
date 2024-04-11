@@ -7,7 +7,7 @@ import kotlin.test.assertTrue
 internal class BransjeTest {
     @Test
     fun `alle bransjer har navn og gyldig id`() {
-        Bransje.values().forEach { bransje ->
+        Bransje.entries.forEach { bransje ->
             assertTrue(bransje.navn.isNotBlank())
             assertTrue {
                 when (bransje.bransjeId) {
