@@ -35,7 +35,8 @@ enum class Bransje(val navn: String, val bransjeId: BransjeId) {
     );
 
     companion object {
-        fun fra(næringskode: String): Bransje? = Bransje.values().firstOrNull {
+        fun fra(næringskode: String) = Bransje.entries.firstOrNull {
+            // TODO: håndtere koder med punktum: næringskode.replace(".", "")
             when (it.bransjeId) {
                 is BransjeId.Næring -> it.bransjeId.næring == næringskode.take(2)
                 is BransjeId.Næringskoder -> it.bransjeId.næringskoder.contains(næringskode)
