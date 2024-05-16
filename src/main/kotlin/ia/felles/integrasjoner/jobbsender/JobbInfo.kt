@@ -1,4 +1,4 @@
-package ia.felles.integrasjoner
+package ia.felles.integrasjoner.jobbsender
 
 interface JobbInfo {
     val jobb: Jobb

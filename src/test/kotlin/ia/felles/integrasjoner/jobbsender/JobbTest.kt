@@ -1,4 +1,4 @@
-package ia.felles.integrasjoner
+package ia.felles.integrasjoner.jobbsender
 
 import java.time.Clock
 import kotlin.test.assertNotNull
