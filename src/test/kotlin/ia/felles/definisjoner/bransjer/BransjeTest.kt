@@ -2,6 +2,7 @@ package ia.felles.definisjoner.bransjer
 
 import org.junit.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 internal class BransjeTest {
@@ -31,5 +32,12 @@ internal class BransjeTest {
     @Test
     fun `uthenting av bransje basert på næringskode henter riktig bransje`() {
         assertEquals(Bransje.fra("87101"), Bransje.SYKEHJEM)
+    }
+
+    @Test
+    fun `utledder bransje basert på næringskode med eller uten punktum`() {
+        assertEquals(Bransje.fra("49311"), Bransje.TRANSPORT)
+        assertEquals(Bransje.fra("49.311"), Bransje.TRANSPORT)
+        assertNull(Bransje.fra("49_311"))
     }
 }
