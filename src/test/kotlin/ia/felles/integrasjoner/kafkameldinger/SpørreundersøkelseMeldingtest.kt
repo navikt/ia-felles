@@ -7,66 +7,66 @@ import org.junit.Test
 
 internal class SpørreundersøkelseMeldingtest {
 
-    data class SpørreundersøkelseImplementasjon(
-        override val id: String,
+    data class SerializableSpørreundersøkelse(
+        override val spørreundersøkelseId: String,
         override val vertId: String? = null,
         override val orgnummer: String,
         override val virksomhetsNavn: String,
         override val status: SpørreundersøkelseStatus,
         override val type: String,
         override val avslutningsdato: LocalDate,
-        override val temaMedSpørsmålOgSvaralternativer: List<TemaImplementasjon>,
+        override val temaMedSpørsmålOgSvaralternativer: List<SerializableTema>,
     ) : SpørreundersøkelseMelding
 
-    data class TemaImplementasjon(
-        override val id: Int,
+    data class SerializableTema(
+        override val temaId: Int,
         override val navn: String? = null,
         override val temanavn: Temanavn? = null,
         override val beskrivelse: String? = null,
         override val introtekst: String? = null,
-        override val spørsmålOgSvaralternativer: List<SpørsmålImplementasjon>,
+        override val spørsmålOgSvaralternativer: List<SerializableSpørsmål>,
     ) : TemaMelding
 
-    data class SpørsmålImplementasjon(
+    data class SerializableSpørsmål(
         override val id: String,
         override val spørsmål: String,
         override val flervalg: Boolean,
-        override val svaralternativer: List<SvaralternativImplementasjon>,
+        override val svaralternativer: List<SerializableSvaralternativ>,
     ) : SpørsmålMelding
 
-    data class SvaralternativImplementasjon(
-        override val id: String,
+    data class SerializableSvaralternativ(
+        override val svarId: String,
         override val svartekst: String,
     ) : SvaralternativMelding
 
-    private val standardSvaralternativ = SvaralternativImplementasjon(
-        id = UUID.randomUUID().toString(),
+    private val standardSvaralternativ = SerializableSvaralternativ(
+        svarId = UUID.randomUUID().toString(),
         svartekst = "Hverken bra eller dårlig"
     )
 
-    private val standardSpørsmål = SpørsmålImplementasjon(
+    private val standardSpørsmål = SerializableSpørsmål(
         flervalg = true,
         id = UUID.randomUUID().toString(),
         spørsmål = "Hva tenker du om IA?",
         svaralternativer = emptyList(),
     )
 
-    private val standardTemaNy = TemaImplementasjon(
-        id = 1,
+    private val standardTemaNy = SerializableTema(
+        temaId = 1,
         navn = "Arbeidsmiljø",
         spørsmålOgSvaralternativer = emptyList()
     )
 
-    private val standardTemaGammel = TemaImplementasjon(
-        id = 1,
+    private val standardTemaGammel = SerializableTema(
+        temaId = 1,
         temanavn = Temanavn.ARBEIDSMILJØ,
         beskrivelse = "Arbeidsmiljø",
         introtekst = "Arbeidsmiljø er viktig for trivsel og produktivitet.",
         spørsmålOgSvaralternativer = emptyList()
     )
 
-    val standardSpørreundersøkelseUtenVertId = SpørreundersøkelseImplementasjon(
-        id = UUID.randomUUID().toString(),
+    val standardSpørreundersøkelseUtenVertId = SerializableSpørreundersøkelse(
+        spørreundersøkelseId = UUID.randomUUID().toString(),
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,
@@ -75,8 +75,8 @@ internal class SpørreundersøkelseMeldingtest {
         temaMedSpørsmålOgSvaralternativer = emptyList()
     )
 
-    val standardSpørreundersøkelse = SpørreundersøkelseImplementasjon(
-        id = UUID.randomUUID().toString(),
+    val standardSpørreundersøkelse = SerializableSpørreundersøkelse(
+        spørreundersøkelseId = UUID.randomUUID().toString(),
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,

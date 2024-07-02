@@ -1,6 +1,6 @@
 package ia.felles.integrasjoner.kafkameldinger
 
 interface SvaralternativMelding{
-    val id: String
+    val svarId: String
     val svartekst: String
 }
