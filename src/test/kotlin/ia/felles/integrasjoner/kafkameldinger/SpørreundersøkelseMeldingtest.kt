@@ -14,7 +14,7 @@ internal class SpørreundersøkelseMeldingtest {
         override val virksomhetsNavn: String,
         override val status: SpørreundersøkelseStatus,
         override val type: String,
-        override val avslutningsdato: LocalDate,
+        override val avslutningsdato: LocalDate? = null,
         override val temaMedSpørsmålOgSvaralternativer: List<SerializableTema>,
     ) : SpørreundersøkelseMelding
 
@@ -65,13 +65,12 @@ internal class SpørreundersøkelseMeldingtest {
         spørsmålOgSvaralternativer = emptyList()
     )
 
-    val standardSpørreundersøkelseUtenVertId = SerializableSpørreundersøkelse(
+    val nySpørreundersøkelseFormat = SerializableSpørreundersøkelse(
         spørreundersøkelseId = UUID.randomUUID().toString(),
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,
         type = "kartlegging",
-        avslutningsdato = LocalDate(1992, 9, 18),
         temaMedSpørsmålOgSvaralternativer = emptyList()
     )
 
@@ -88,7 +87,7 @@ internal class SpørreundersøkelseMeldingtest {
     @Test
     fun `Implementasjons data klasser blir ikke null`() {
         assertNotNull(standardSpørreundersøkelse)
-        assertNotNull(standardSpørreundersøkelseUtenVertId)
+        assertNotNull(nySpørreundersøkelseFormat)
         assertNotNull(standardTemaGammel)
         assertNotNull(standardTemaNy)
         assertNotNull(standardSpørsmål)

@@ -9,6 +9,6 @@ interface SpørreundersøkelseMelding{
     val virksomhetsNavn: String
     val status: SpørreundersøkelseStatus
     val type: String
-    val avslutningsdato: LocalDate
+    val avslutningsdato: LocalDate? //TODO: Deprecate?
     val temaMedSpørsmålOgSvaralternativer: List<TemaMelding>
 }
