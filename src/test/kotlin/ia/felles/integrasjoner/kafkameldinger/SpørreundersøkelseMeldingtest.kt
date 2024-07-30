@@ -13,7 +13,7 @@ internal class SpørreundersøkelseMeldingtest {
         override val orgnummer: String,
         override val virksomhetsNavn: String,
         override val status: SpørreundersøkelseStatus,
-        override val type: String,
+        override val type: String? = null,
         override val avslutningsdato: LocalDate? = null,
         override val temaMedSpørsmålOgSvaralternativer: List<SerializableTema>,
     ) : SpørreundersøkelseMelding
@@ -70,12 +70,12 @@ internal class SpørreundersøkelseMeldingtest {
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,
-        type = "kartlegging",
         temaMedSpørsmålOgSvaralternativer = emptyList()
     )
 
     val standardSpørreundersøkelse = SerializableSpørreundersøkelse(
         spørreundersøkelseId = UUID.randomUUID().toString(),
+        vertId = UUID.randomUUID().toString(),
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,
