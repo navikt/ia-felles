@@ -9,5 +9,11 @@ enum class Jobb {
     iaSakLeveranseEksport,
     næringsImport,
     materializedViewOppdatering,
-    importSykefraværKvartalsstatistikk,
+    alleKategorierSykefraværsstatistikkDvhImport,
+    landSykefraværsstatistikkDvhImport,
+    sektorSykefraværsstatistikkDvhImport,
+    næringSykefraværsstatistikkDvhImport,
+    næringskodeSykefraværsstatistikkDvhImport,
+    virksomhetSykefraværsstatistikkDvhImport,
+    virksomhetMetadataSykefraværsstatistikkDvhImport,
 }
