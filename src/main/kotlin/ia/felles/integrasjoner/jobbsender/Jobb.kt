@@ -16,4 +16,5 @@ enum class Jobb {
     næringskodeSykefraværsstatistikkDvhImport,
     virksomhetSykefraværsstatistikkDvhImport,
     virksomhetMetadataSykefraværsstatistikkDvhImport,
+    publiseringsdatoDvhImport,
 }
