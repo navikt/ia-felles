@@ -20,4 +20,5 @@ enum class Jobb {
     virksomhetSykefraværsstatistikkDvhImport,
     virksomhetMetadataSykefraværsstatistikkDvhImport,
     publiseringsdatoDvhImport,
+    kalkulerResulterendeStatusForHendelser,
 }
