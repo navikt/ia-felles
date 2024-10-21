@@ -1,6 +1,5 @@
 package ia.felles.integrasjoner.kafkameldinger
 
-import kotlinx.datetime.LocalDate
 import org.junit.Test
 import java.util.UUID
 import kotlin.test.assertNotNull
@@ -8,21 +7,16 @@ import kotlin.test.assertNotNull
 internal class SpørreundersøkelseMeldingtest {
     data class SerializableSpørreundersøkelse(
         override val spørreundersøkelseId: String,
-        override val vertId: String? = null,
         override val orgnummer: String,
         override val virksomhetsNavn: String,
         override val status: SpørreundersøkelseStatus,
-        override val type: String? = null,
-        override val avslutningsdato: LocalDate? = null,
+        override val type: String,
         override val temaMedSpørsmålOgSvaralternativer: List<SerializableTema>,
     ) : SpørreundersøkelseMelding
 
     data class SerializableTema(
         override val temaId: Int,
-        override val navn: String? = null,
-        override val temanavn: Temanavn? = null,
-        override val beskrivelse: String? = null,
-        override val introtekst: String? = null,
+        override val navn: String,
         override val spørsmålOgSvaralternativer: List<SerializableSpørsmål>,
     ) : TemaMelding
 
@@ -50,45 +44,25 @@ internal class SpørreundersøkelseMeldingtest {
         svaralternativer = emptyList(),
     )
 
-    private val standardTemaNy = SerializableTema(
+    private val standardTema = SerializableTema(
         temaId = 1,
         navn = "Arbeidsmiljø",
         spørsmålOgSvaralternativer = emptyList(),
     )
 
-    private val standardTemaGammel = SerializableTema(
-        temaId = 1,
-        temanavn = Temanavn.ARBEIDSMILJØ,
-        beskrivelse = "Arbeidsmiljø",
-        introtekst = "Arbeidsmiljø er viktig for trivsel og produktivitet.",
-        spørsmålOgSvaralternativer = emptyList(),
-    )
-
-    val nySpørreundersøkelseFormat = SerializableSpørreundersøkelse(
-        spørreundersøkelseId = UUID.randomUUID().toString(),
-        orgnummer = "123456789",
-        virksomhetsNavn = "Bakeriet AS",
-        status = SpørreundersøkelseStatus.OPPRETTET,
-        temaMedSpørsmålOgSvaralternativer = emptyList(),
-    )
-
     val standardSpørreundersøkelse = SerializableSpørreundersøkelse(
         spørreundersøkelseId = UUID.randomUUID().toString(),
-        vertId = UUID.randomUUID().toString(),
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,
-        type = "kartlegging",
-        avslutningsdato = LocalDate(1992, 9, 18),
+        type = "behovsvurdering",
         temaMedSpørsmålOgSvaralternativer = emptyList(),
     )
 
     @Test
     fun `Implementasjons data klasser blir ikke null`() {
         assertNotNull(standardSpørreundersøkelse)
-        assertNotNull(nySpørreundersøkelseFormat)
-        assertNotNull(standardTemaGammel)
-        assertNotNull(standardTemaNy)
+        assertNotNull(standardTema)
         assertNotNull(standardSpørsmål)
         assertNotNull(standardSvaralternativ)
     }

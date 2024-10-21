@@ -10,10 +10,8 @@ import kotlin.test.assertNotNull
 internal class SpørreundersøkelseOppdateringtest {
     data class TemaResultatDto(
         override val temaId: Int,
-        override val navn: String?,
+        override val navn: String,
         override val spørsmålMedSvar: List<SpørsmålResultatDto>,
-        override val beskrivelse: String?,
-        override val tema: String?,
     ) : TemaResultatMelding
 
     data class SpørsmålResultatDto(
@@ -46,21 +44,10 @@ internal class SpørreundersøkelseOppdateringtest {
         temaId = 1,
         navn = "Arbeidsmiljø",
         spørsmålMedSvar = listOf(spørsmål),
-        beskrivelse = null,
-        tema = null,
-    )
-
-    private val gammelTTema = TemaResultatDto(
-        temaId = 1,
-        navn = null,
-        spørsmålMedSvar = listOf(spørsmål),
-        beskrivelse = "Arbeidsmiljø",
-        tema = Temanavn.ARBEIDSMILJØ.name,
     )
 
     @Test
     fun `Implementasjons data klasser blir ikke null`() {
-        assertNotNull(gammelTTema)
         assertNotNull(tema)
         assertNotNull(spørsmål)
         assertNotNull(svar)
