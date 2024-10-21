@@ -6,4 +6,3 @@ interface SpørsmålResultatMelding {
     val flervalg: Boolean
     val svarListe: List<SvarResultatMelding>
 }
-

@@ -1,6 +1,6 @@
 package ia.felles.integrasjoner.kafkameldinger
 
-interface SpørsmålMelding{
+interface SpørsmålMelding {
     val id: String
     val spørsmål: String
     val flervalg: Boolean

@@ -15,7 +15,6 @@ plugins {
     `maven-publish`
 }
 
-
 dependencies {
     implementation(kotlin("stdlib", "2.0.20"))
     // Align versions of all Kotlin components
@@ -60,4 +59,3 @@ publishing {
         }
     }
 }
-

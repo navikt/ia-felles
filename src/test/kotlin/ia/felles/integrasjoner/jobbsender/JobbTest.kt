@@ -1,11 +1,10 @@
 package ia.felles.integrasjoner.jobbsender
 
+import org.junit.Test
 import java.time.Clock
 import kotlin.test.assertNotNull
-import org.junit.Test
 
 internal class JobbTest {
-
     data class JobbInfoImplementasjon(
         override val jobb: Jobb,
         override val tidspunkt: String,
@@ -18,7 +17,7 @@ internal class JobbTest {
             val nyJobbInfo = JobbInfoImplementasjon(
                 jobb = jobbtype,
                 tidspunkt = "${Clock.systemUTC().instant()}",
-                applikasjon = "jobbsender"
+                applikasjon = "jobbsender",
             )
             assertNotNull(nyJobbInfo)
         }

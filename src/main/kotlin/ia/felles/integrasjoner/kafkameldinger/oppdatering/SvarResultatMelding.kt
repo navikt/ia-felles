@@ -5,4 +5,3 @@ interface SvarResultatMelding {
     val tekst: String
     val antallSvar: Int
 }
-

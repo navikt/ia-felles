@@ -3,18 +3,17 @@ package ia.felles.integrasjoner.kafkameldinger
 import ia.felles.integrasjoner.kafkameldinger.oppdatering.SpørsmålResultatMelding
 import ia.felles.integrasjoner.kafkameldinger.oppdatering.SvarResultatMelding
 import ia.felles.integrasjoner.kafkameldinger.oppdatering.TemaResultatMelding
+import org.junit.Test
 import java.util.UUID
 import kotlin.test.assertNotNull
-import org.junit.Test
 
 internal class SpørreundersøkelseOppdateringtest {
-
     data class TemaResultatDto(
         override val temaId: Int,
         override val navn: String?,
         override val spørsmålMedSvar: List<SpørsmålResultatDto>,
         override val beskrivelse: String?,
-        override val tema: String?
+        override val tema: String?,
     ) : TemaResultatMelding
 
     data class SpørsmålResultatDto(
@@ -33,7 +32,7 @@ internal class SpørreundersøkelseOppdateringtest {
     private val svar = SvarResultatDto(
         svarId = UUID.randomUUID().toString(),
         tekst = "Hverken bra eller dårlig",
-        antallSvar = 10
+        antallSvar = 10,
     )
 
     private val spørsmål = SpørsmålResultatDto(
@@ -48,7 +47,7 @@ internal class SpørreundersøkelseOppdateringtest {
         navn = "Arbeidsmiljø",
         spørsmålMedSvar = listOf(spørsmål),
         beskrivelse = null,
-        tema = null
+        tema = null,
     )
 
     private val gammelTTema = TemaResultatDto(
@@ -56,7 +55,7 @@ internal class SpørreundersøkelseOppdateringtest {
         navn = null,
         spørsmålMedSvar = listOf(spørsmål),
         beskrivelse = "Arbeidsmiljø",
-        tema = Temanavn.ARBEIDSMILJØ.name
+        tema = Temanavn.ARBEIDSMILJØ.name,
     )
 
     @Test

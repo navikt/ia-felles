@@ -1,12 +1,11 @@
 package ia.felles.integrasjoner.kafkameldinger
 
-import java.util.UUID
-import kotlin.test.assertNotNull
 import kotlinx.datetime.LocalDate
 import org.junit.Test
+import java.util.UUID
+import kotlin.test.assertNotNull
 
 internal class SpørreundersøkelseMeldingtest {
-
     data class SerializableSpørreundersøkelse(
         override val spørreundersøkelseId: String,
         override val vertId: String? = null,
@@ -41,7 +40,7 @@ internal class SpørreundersøkelseMeldingtest {
 
     private val standardSvaralternativ = SerializableSvaralternativ(
         svarId = UUID.randomUUID().toString(),
-        svartekst = "Hverken bra eller dårlig"
+        svartekst = "Hverken bra eller dårlig",
     )
 
     private val standardSpørsmål = SerializableSpørsmål(
@@ -54,7 +53,7 @@ internal class SpørreundersøkelseMeldingtest {
     private val standardTemaNy = SerializableTema(
         temaId = 1,
         navn = "Arbeidsmiljø",
-        spørsmålOgSvaralternativer = emptyList()
+        spørsmålOgSvaralternativer = emptyList(),
     )
 
     private val standardTemaGammel = SerializableTema(
@@ -62,7 +61,7 @@ internal class SpørreundersøkelseMeldingtest {
         temanavn = Temanavn.ARBEIDSMILJØ,
         beskrivelse = "Arbeidsmiljø",
         introtekst = "Arbeidsmiljø er viktig for trivsel og produktivitet.",
-        spørsmålOgSvaralternativer = emptyList()
+        spørsmålOgSvaralternativer = emptyList(),
     )
 
     val nySpørreundersøkelseFormat = SerializableSpørreundersøkelse(
@@ -70,7 +69,7 @@ internal class SpørreundersøkelseMeldingtest {
         orgnummer = "123456789",
         virksomhetsNavn = "Bakeriet AS",
         status = SpørreundersøkelseStatus.OPPRETTET,
-        temaMedSpørsmålOgSvaralternativer = emptyList()
+        temaMedSpørsmålOgSvaralternativer = emptyList(),
     )
 
     val standardSpørreundersøkelse = SerializableSpørreundersøkelse(

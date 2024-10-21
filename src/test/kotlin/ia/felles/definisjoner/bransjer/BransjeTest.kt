@@ -16,7 +16,7 @@ internal class BransjeTest {
                     is BransjeId.Næring -> (bransje.bransjeId as BransjeId.Næring).næring.matches(Regex("""\d{2}"""))
                     is BransjeId.Næringskoder -> (bransje.bransjeId as BransjeId.Næringskoder).næringskoder.all {
                         it.matches(
-                            Regex("""\d{5}""")
+                            Regex("""\d{5}"""),
                         )
                     }
                 }

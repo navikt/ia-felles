@@ -7,4 +7,3 @@ interface TemaResultatMelding {
     val tema: String? // TODO: Deprecate
     val beskrivelse: String? // TODO: Deprecate
 }
-
