@@ -6,6 +6,7 @@ interface SpørreundersøkelseMelding {
     val status: SpørreundersøkelseStatus
     val orgnummer: String
     val virksomhetsNavn: String
+    val samarbeidsNavn: String?
     val temaer: List<TemaMelding>
 
     @Deprecated("Bruk temaer")

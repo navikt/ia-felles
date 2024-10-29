@@ -16,6 +16,7 @@ internal class SpørreundersøkelseMeldingtest {
         override val status: SpørreundersøkelseStatus,
         override val orgnummer: String,
         override val virksomhetsNavn: String,
+        override val samarbeidsNavn: String? = null,
         override val temaer: List<SerializableTema>,
         @Deprecated("Bruk id")
         override val spørreundersøkelseId: String? = null,
@@ -121,6 +122,7 @@ internal class SpørreundersøkelseMeldingtest {
             id = spørreundersøkelseId,
             orgnummer = "123456789",
             virksomhetsNavn = "Bakeriet AS",
+            samarbeidsNavn = "Samarbeid uten navn",
             status = SpørreundersøkelseStatus.OPPRETTET,
             type = "behovsvurdering",
             temaer = listOf(nyttTema),
