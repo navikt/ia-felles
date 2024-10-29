@@ -1,4 +1,4 @@
-package ia.felles.integrasjoner.kafkameldinger
+package ia.felles.integrasjoner.kafkameldinger.spørreundersøkelse
 
 enum class SpørreundersøkelseStatus {
     OPPRETTET,
