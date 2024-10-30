@@ -16,12 +16,12 @@ internal class SpørreundersøkelseMeldingtest {
         override val status: SpørreundersøkelseStatus,
         override val orgnummer: String,
         override val virksomhetsNavn: String,
-        override val samarbeidsNavn: String? = null,
+        override val samarbeidsNavn: String,
         override val temaer: List<SerializableTema>,
         @Deprecated("Bruk id")
-        override val spørreundersøkelseId: String? = null,
+        override val spørreundersøkelseId: String,
         @Deprecated("Bruk temaer")
-        override val temaMedSpørsmålOgSvaralternativer: List<TemaMelding>? = null,
+        override val temaMedSpørsmålOgSvaralternativer: List<TemaMelding>,
     ) : SpørreundersøkelseMelding
 
     data class SerializableTema(
@@ -29,9 +29,9 @@ internal class SpørreundersøkelseMeldingtest {
         override val navn: String,
         override val spørsmål: List<SerializableSpørsmål>,
         @Deprecated("Bruk id")
-        override val temaId: Int? = null,
+        override val temaId: Int,
         @Deprecated("Bruk spørsmål")
-        override val spørsmålOgSvaralternativer: List<SerializableSpørsmål>? = null,
+        override val spørsmålOgSvaralternativer: List<SerializableSpørsmål>,
     ) : TemaMelding
 
     data class SerializableSpørsmål(
@@ -40,21 +40,22 @@ internal class SpørreundersøkelseMeldingtest {
         override val flervalg: Boolean,
         override val svaralternativer: List<SerializableSvaralternativ>,
         @Deprecated("Bruk tekst")
-        override val spørsmål: String? = null,
+        override val spørsmål: String,
     ) : SpørsmålMelding
 
     data class SerializableSvaralternativ(
         override val id: String,
         override val tekst: String,
         @Deprecated("Bruk id")
-        override val svarId: String? = null,
+        override val svarId: String,
         @Deprecated("Bruk tekst")
-        override val svartekst: String? = null,
+        override val svartekst: String,
     ) : SvaralternativMelding
 
     private val spørreundersøkelseId = UUID.randomUUID().toString()
-    private val svarId = UUID.randomUUID().toString()
     private val temaId = 1
+    private val spørsmålId = UUID.randomUUID().toString()
+    private val svarId = UUID.randomUUID().toString()
     private val svartekst = "Hverken bra eller dårlig"
 
     @Test
@@ -67,7 +68,7 @@ internal class SpørreundersøkelseMeldingtest {
         )
 
         val standardSpørsmål = SerializableSpørsmål(
-            id = UUID.randomUUID().toString(),
+            id = spørsmålId,
             flervalg = true,
             tekst = "Hva tenker du om IA?",
             spørsmål = "Hva tenker du om IA?",
@@ -87,6 +88,7 @@ internal class SpørreundersøkelseMeldingtest {
             spørreundersøkelseId = spørreundersøkelseId,
             orgnummer = "123456789",
             virksomhetsNavn = "Bakeriet AS",
+            samarbeidsNavn = "Samarbeid uten navn",
             status = SpørreundersøkelseStatus.OPPRETTET,
             type = "behovsvurdering",
             temaer = listOf(standardTema),
@@ -102,30 +104,37 @@ internal class SpørreundersøkelseMeldingtest {
     fun `Nye data klasser blir ikke null`() {
         val nyttSvaralternativ = SerializableSvaralternativ(
             id = svarId,
+            svarId = svarId,
             tekst = svartekst,
+            svartekst = svartekst,
         )
 
         val nyttSpørsmål = SerializableSpørsmål(
             id = UUID.randomUUID().toString(),
             tekst = "Hva tenker du om IA?",
+            spørsmål = "Hva tenker du om IA?",
             flervalg = true,
             svaralternativer = listOf(nyttSvaralternativ),
         )
 
         val nyttTema = SerializableTema(
             id = temaId,
+            temaId = temaId,
             navn = "Arbeidsmiljø",
             spørsmål = listOf(nyttSpørsmål),
+            spørsmålOgSvaralternativer = listOf(nyttSpørsmål),
         )
 
         val nySpørreundersøkelse = SerializableSpørreundersøkelse(
             id = spørreundersøkelseId,
+            spørreundersøkelseId = spørreundersøkelseId,
             orgnummer = "123456789",
             virksomhetsNavn = "Bakeriet AS",
             samarbeidsNavn = "Samarbeid uten navn",
             status = SpørreundersøkelseStatus.OPPRETTET,
             type = "behovsvurdering",
             temaer = listOf(nyttTema),
+            temaMedSpørsmålOgSvaralternativer = listOf(nyttTema),
         )
 
         assertNotNull(nySpørreundersøkelse)
