@@ -9,12 +9,16 @@ import kotlin.test.assertNotNull
 
 internal class SpørreundersøkelseOppdateringtest {
     data class TemaResultatDto(
+        override val id: Int,
+        @Deprecated("Bruk Id")
         override val temaId: Int,
         override val navn: String,
         override val spørsmålMedSvar: List<SpørsmålResultatDto>,
     ) : TemaResultatMelding
 
     data class SpørsmålResultatDto(
+        override val id: String,
+        @Deprecated("Bruk id")
         override val spørsmålId: String,
         override val tekst: String,
         override val flervalg: Boolean,
@@ -22,26 +26,35 @@ internal class SpørreundersøkelseOppdateringtest {
     ) : SpørsmålResultatMelding
 
     data class SvarResultatDto(
+        override val id: String,
+        @Deprecated("Bruk id")
         override val svarId: String,
         override val tekst: String,
         override val antallSvar: Int,
     ) : SvarResultatMelding
 
+    private val svarId = UUID.randomUUID().toString()
+    private val spørsmålId = UUID.randomUUID().toString()
+    private val temaId = 1
+
     private val svar = SvarResultatDto(
-        svarId = UUID.randomUUID().toString(),
+        id = svarId,
+        svarId = svarId,
         tekst = "Hverken bra eller dårlig",
         antallSvar = 10,
     )
 
     private val spørsmål = SpørsmålResultatDto(
-        flervalg = true,
-        spørsmålId = UUID.randomUUID().toString(),
+        id = spørsmålId,
+        spørsmålId = spørsmålId,
         tekst = "Hva tenker du om IA?",
+        flervalg = true,
         svarListe = listOf(svar),
     )
 
     private val tema = TemaResultatDto(
-        temaId = 1,
+        id = temaId,
+        temaId = temaId,
         navn = "Arbeidsmiljø",
         spørsmålMedSvar = listOf(spørsmål),
     )

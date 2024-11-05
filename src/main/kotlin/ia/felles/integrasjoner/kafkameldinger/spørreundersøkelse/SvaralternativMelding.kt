@@ -5,8 +5,8 @@ interface SvaralternativMelding {
     val tekst: String
 
     @Deprecated("Bruk id")
-    val svarId: String?
+    val svarId: String
 
     @Deprecated("Bruk tekst")
-    val svartekst: String?
+    val svartekst: String
 }

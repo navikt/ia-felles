@@ -7,5 +7,5 @@ interface SpørsmålMelding {
     val svaralternativer: List<SvaralternativMelding>
 
     @Deprecated("Bruk tekst")
-    val spørsmål: String?
+    val spørsmål: String
 }

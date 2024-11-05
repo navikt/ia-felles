@@ -6,8 +6,8 @@ interface TemaMelding {
     val spørsmål: List<SpørsmålMelding>
 
     @Deprecated("Bruk Id")
-    val temaId: Int?
+    val temaId: Int
 
     @Deprecated("Bruk spørsmål")
-    val spørsmålOgSvaralternativer: List<SpørsmålMelding>?
+    val spørsmålOgSvaralternativer: List<SpørsmålMelding>
 }

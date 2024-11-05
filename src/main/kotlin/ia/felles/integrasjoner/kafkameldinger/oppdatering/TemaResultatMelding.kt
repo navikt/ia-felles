@@ -1,7 +1,10 @@
 package ia.felles.integrasjoner.kafkameldinger.oppdatering
 
 interface TemaResultatMelding {
-    val temaId: Int
+    val id: Int
     val navn: String
     val spørsmålMedSvar: List<SpørsmålResultatMelding>
+
+    @Deprecated("Bruk Id")
+    val temaId: Int
 }
