@@ -29,6 +29,9 @@ enum class Jobb {
     iaSakSamarbeidsplanEksport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
+    iaSakSamarbeidsplanBigqueryEksport,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
     næringsImport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
