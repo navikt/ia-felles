@@ -5,7 +5,4 @@ interface SpørsmålMelding {
     val tekst: String
     val flervalg: Boolean
     val svaralternativer: List<SvaralternativMelding>
-
-    @Deprecated("Bruk tekst")
-    val spørsmål: String
 }

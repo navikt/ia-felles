@@ -5,7 +5,4 @@ interface SpørsmålResultatMelding {
     val tekst: String
     val flervalg: Boolean
     val svarListe: List<SvarResultatMelding>
-
-    @Deprecated("Bruk id")
-    val spørsmålId: String
 }

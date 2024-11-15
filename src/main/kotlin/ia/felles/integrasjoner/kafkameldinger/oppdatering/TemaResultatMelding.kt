@@ -4,7 +4,4 @@ interface TemaResultatMelding {
     val id: Int
     val navn: String
     val spørsmålMedSvar: List<SpørsmålResultatMelding>
-
-    @Deprecated("Bruk Id")
-    val temaId: Int
 }

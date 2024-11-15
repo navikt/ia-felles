@@ -8,10 +8,4 @@ interface SpørreundersøkelseMelding {
     val virksomhetsNavn: String
     val samarbeidsNavn: String
     val temaer: List<TemaMelding>
-
-    @Deprecated("Bruk temaer")
-    val temaMedSpørsmålOgSvaralternativer: List<TemaMelding>
-
-    @Deprecated("Bruk Id")
-    val spørreundersøkelseId: String
 }
