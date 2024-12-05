@@ -3,7 +3,7 @@ package ia.felles.integrasjoner.kafkameldinger.eksport
 import ia.felles.integrasjoner.kafkameldinger.spørreundersøkelse.SpørreundersøkelseStatus
 import kotlinx.datetime.LocalDateTime
 
-interface SpørreundersøkelseMelding {
+interface SpørreundersøkelseEksportMelding {
     val id: String
     val orgnr: String
     val type: String
