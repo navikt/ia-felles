@@ -23,7 +23,10 @@ enum class Jobb {
     iaSakSamarbeidEksport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
-    iaSakBehovsvurderingEksport,
+    iaSakSamarbeidBigQueryEksport,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
+    spørreundersøkelseBigQueryEksport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
     iaSakSamarbeidsplanEksport,
