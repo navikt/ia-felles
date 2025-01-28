@@ -56,6 +56,9 @@ enum class Jobb {
     næringskodeSykefraværsstatistikkDvhImport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
+    bransjeSykefraværsstatistikkDvhImport,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
     virksomhetSykefraværsstatistikkDvhImport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
