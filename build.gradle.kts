@@ -16,11 +16,11 @@ plugins {
 }
 
 dependencies {
-    implementation(kotlin("stdlib", "2.1.0"))
+    implementation(kotlin("stdlib", "2.1.10"))
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:2.1.0"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:2.1.10"))
     // Use the Kotlin datetime
-    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.2")
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     // Use the Kotlin JUnit integration.
