@@ -10,7 +10,7 @@ val transportSN2007: List<String> = listOf("49100", "49311", "49312", "49391", "
 val barnehagerSN2025: List<String> = listOf("85100")
 val sykehusSN2025: List<String> = listOf("86101", "86102", "86103", "86104")
 val sykehjemSN2025: List<String> = listOf("87101", "87102", "87103", "87104", "87105", "87106")
-val transportSN2025: List<String> = listOf("49110", "49120", "49310", "49320", "49330", "49340", "49390")
+val transportSN2025: List<String> = listOf("49110", "49120", "49310", "49320", "49330", "49390")
 
 /*
 
