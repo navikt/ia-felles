@@ -10,15 +10,15 @@ repositories {
 }
 
 plugins {
-    kotlin("jvm") version "2.2.10"
+    kotlin("jvm") version "2.2.20"
     `java-library`
     `maven-publish`
 }
 
 dependencies {
-    implementation(kotlin("stdlib", "2.2.10"))
+    implementation(kotlin("stdlib", "2.2.20"))
     // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom:2.2.10"))
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:2.2.20"))
     // Use the Kotlin test library.
     testImplementation("org.jetbrains.kotlin:kotlin-test")
     // Use the Kotlin JUnit integration.
