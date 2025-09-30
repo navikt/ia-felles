@@ -1,25 +1,43 @@
 package ia.felles.definisjoner.noa
 
 import org.junit.Test
+import kotlin.test.Ignore
+import kotlin.test.assertEquals
+import kotlin.test.assertNull
 
 internal class NoaNæringTest {
     @Test
+    fun `uthenting av bransje basert på næringskode henter riktig bransje`() {
+        assertEquals(NoaNæring.fra("85100"), NoaNæring.BARNEHAGE_OG_SFO)
+        assertEquals(NoaNæring.fra("11010"), NoaNæring.NÆRINGSMIDDELINDUSTRI)
+        assertEquals(NoaNæring.fra("87105"), NoaNæring.SYKEHJEM_OMSORGSINSTITUSJONER)
+    }
+
+    @Test
+    fun `utledder bransje basert på næringskode med eller uten punktum`() {
+        assertEquals(NoaNæring.fra("11010"), NoaNæring.NÆRINGSMIDDELINDUSTRI)
+        assertEquals(NoaNæring.fra("11.010"), NoaNæring.NÆRINGSMIDDELINDUSTRI)
+        assertNull(NoaNæring.fra("11_010"))
+    }
+
+    @Test
+    @Ignore("Kun for utforsking, ikke en egentlig test")
     fun `utforsking av NoaNæring`() {
         var count = 0
 
-        val noaNæringerMedOverlappendeNæringskoder = mutableListOf<NoaNæring>()
+        val noaNæringerMedOverlappendeNæringskoderSN2007 = mutableListOf<NoaNæringSN2007>()
 
         for ((næringskodeSN2025, _) in korrespondanseMap) {
             val values = hentSN2007Næringskode(næringskodeSN2025)
-            val noaNæringer = values.mapNotNull { NoaNæring.fra(it) }.distinct()
+            val noaNæringerSN2007 = values.mapNotNull { NoaNæringSN2007.fra(it) }.distinct()
 
             if (values.size > 1) {
-                if (noaNæringer.size > 1) {
+                if (noaNæringerSN2007.size > 1) {
                     count += 1
-                    noaNæringerMedOverlappendeNæringskoder.addAll(noaNæringer)
+                    noaNæringerMedOverlappendeNæringskoderSN2007.addAll(noaNæringerSN2007)
                     println("Næringskode SN2025 $næringskodeSN2025 kan kan ha vært ${values.size} næringskoder i SN2007: $values ")
                     println(
-                        "    Dette gjør at vi ikke vet hvilken av ${noaNæringer.size} NoaNæringer vi skal sette: ${noaNæringer.map {
+                        "    Dette gjør at vi ikke vet hvilken av ${noaNæringerSN2007.size} NoaNæringer vi skal sette: ${noaNæringerSN2007.map {
                             it.navn
                         }}",
                     )
@@ -32,19 +50,19 @@ internal class NoaNæringTest {
         println("Antall unike SN2025 koder: $antallSN2025Næringskoder")
         println("Antall næringskoder uten NOA+ kræsj = ${antallSN2025Næringskoder - count}")
         println(
-            "NoaNæringer som er vanskelige å velge mellom (${noaNæringerMedOverlappendeNæringskoder.distinct().size}: ${noaNæringerMedOverlappendeNæringskoder.distinct().map {
+            "NoaNæringer som er vanskelige å velge mellom (${noaNæringerMedOverlappendeNæringskoderSN2007.distinct().size}: ${noaNæringerMedOverlappendeNæringskoderSN2007.distinct().map {
                 it.navn
             }}",
         )
 
         println("Næringer med antall overlappende næringskoder:")
-        for (vanskeligNæring in noaNæringerMedOverlappendeNæringskoder.distinct()) {
-            println("${vanskeligNæring.navn}: ${noaNæringerMedOverlappendeNæringskoder.count { it == vanskeligNæring }}")
+        for (vanskeligNæring in noaNæringerMedOverlappendeNæringskoderSN2007.distinct()) {
+            println("${vanskeligNæring.navn}: ${noaNæringerMedOverlappendeNæringskoderSN2007.count { it == vanskeligNæring }}")
         }
 
         println(
-            "Næringer som burde være ok: ${NoaNæring.entries.filter { noaNæring ->
-                noaNæringerMedOverlappendeNæringskoder.all{ overlappendeNoaNæring -> overlappendeNoaNæring != noaNæring}
+            "Næringer som burde være ok: ${NoaNæringSN2007.entries.filter { noaNæring ->
+                noaNæringerMedOverlappendeNæringskoderSN2007.all{ overlappendeNoaNæring -> overlappendeNoaNæring != noaNæring}
             }.map { it.navn } }",
         )
     }

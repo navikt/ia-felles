@@ -4,7 +4,7 @@ data class Næringskoder(
     val næringskoder: List<String>,
 )
 
-enum class NoaNæring(
+enum class NoaNæringSN2007(
     val navn: String,
     val bransjeId: Næringskoder,
 ) {
