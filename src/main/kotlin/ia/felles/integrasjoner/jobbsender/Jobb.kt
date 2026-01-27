@@ -74,5 +74,8 @@ enum class Jobb {
     kalkulerResulterendeStatusForHendelser,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
+    prosesserPlanlagteHendelser,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
     engangsJobb,
 }
