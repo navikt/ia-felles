@@ -77,5 +77,11 @@ enum class Jobb {
     prosesserPlanlagteHendelser,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
+    migrerEnVirksomhetTilNyFlyt,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
+    migrerAlleVirksomheterTilNyFlyt,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
     engangsJobb,
 }
