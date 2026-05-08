@@ -84,4 +84,7 @@ enum class Jobb {
 
     @Suppress("ktlint:standard:enum-entry-name-case")
     engangsJobb,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
+    sjekkPubliseringsdatoOgImporter,
 }
