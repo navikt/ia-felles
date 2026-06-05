@@ -69,3 +69,10 @@ Du kan også slette release i Jitpack (mulig den blir slettet automatisk noen mi
 
 Åpne [Jitpack](https://jitpack.io/#navikt/ia-felles), login med GitHub og bruk den slett knappen ved siden av release (en rød kryss). Info om release vil forsvinne etter noen minutter. 
 
+## Henvendelser
+
+Spørsmål knyttet til koden eller repositoryet kan stilles som issues her på GitHub
+
+### For Nav-ansatte
+
+Interne henvendelser kan sendes via Slack i kanalen #team-pia-utvikling.
