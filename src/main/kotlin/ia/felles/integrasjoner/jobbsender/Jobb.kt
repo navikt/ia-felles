@@ -2,12 +2,6 @@ package ia.felles.integrasjoner.jobbsender
 
 enum class Jobb {
     @Suppress("ktlint:standard:enum-entry-name-case")
-    ryddeIUrørteSaker,
-
-    @Suppress("ktlint:standard:enum-entry-name-case")
-    ryddeIUrørteSakerTørrKjør,
-
-    @Suppress("ktlint:standard:enum-entry-name-case")
     iaSakEksport,
 
     @Suppress("ktlint:standard:enum-entry-name-case")
