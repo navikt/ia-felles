@@ -19,4 +19,16 @@ sealed class BransjeId {
             require(næringskoder.all { it.matches(Regex("""\d{5}""")) })
         }
     }
+
+    companion object {
+        fun <T> fra(entries: List<T>, getBransjeId: (T) -> BransjeId, næringskode: String): T? {
+            val næringskodeUtenPunktum = næringskode.replace(".", "")
+            return entries.firstOrNull {
+                when (val id = getBransjeId(it)) {
+                    is Næring -> id.næring == næringskodeUtenPunktum.take(2)
+                    is Næringskoder -> id.næringskoder.contains(næringskodeUtenPunktum)
+                }
+            }
+        }
+    }
 }
