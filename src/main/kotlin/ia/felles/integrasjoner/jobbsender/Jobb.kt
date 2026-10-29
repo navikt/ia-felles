@@ -81,4 +81,7 @@ enum class Jobb {
 
     @Suppress("ktlint:standard:enum-entry-name-case")
     sjekkPubliseringsdatoOgImporter,
+
+    @Suppress("ktlint:standard:enum-entry-name-case")
+    fullforKartleggingEtter24t,
 }
